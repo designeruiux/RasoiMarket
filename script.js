@@ -204,7 +204,7 @@ let html = `
 
   html += `
       <div class="text-end mt-3">
-        <h6 class="mb-2" >Dish Price: ₹${total}</h6>
+        <p class="mb-2" >Dish Price: ₹${total}</p>
 
         <div class="d-flex justify-content-end align-items-center mt-3 gap-2">
           <label class="mb-0">Total Guest:</label>
@@ -212,7 +212,7 @@ let html = `
           <button class="btn btn-add" onclick="updateFinal(${total})">Calculate</button>
         </div>
 
-        <h6 id="finalTotal" class="mt-3"></h6>
+        <p id="finalTotal" class="mt-3"></p>
       </div>
     </div>
 
@@ -285,7 +285,7 @@ function clearError() {
 function updateFinal(total) {
   let people = parseInt(document.getElementById("people").value) || 1;
   document.getElementById("finalTotal").innerText =
-    `Total Guest(${people}) × Dish Price(₹${total}) = ₹${total * people}`;
+    `Guest(${people}) ×  Price(₹${total}) = ₹${total * people}`;
 }
 
 function validateForm() {
