@@ -285,6 +285,58 @@ input.form-control {
   padding: 2px;
 }
 
+.active-btn {
+      background: linear-gradient(90deg, #d35400, #ff7f50) !important;
+    color: white !important;
+    border: none;
+   
+}
+
+
+.form-label{
+  text-align: center;
+}
+.info-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    height: 100%;
+    word-wrap: break-word;
+}
+
+.info-box i {
+    font-size: 26px;
+    background: linear-gradient(90deg, #d35400, #ff7f50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.info-box h6 {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.info-box p {
+    font-size: 15px;
+    color: #555;
+    margin: 0;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+/* contact page */
+
+.contact-form{
+ background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
 /* ========================= */
 /* MEDIA QUERIES (ALL BELOW) */
 /* ========================= */
@@ -379,3 +431,5 @@ input.form-control {
     flex-wrap: nowrap !important;
   }
 }
+
+

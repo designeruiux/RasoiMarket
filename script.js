@@ -246,7 +246,12 @@ let html = `
 <div class="row mb-2">
   <div class="col-3 col-md-4">Date</div>
   <div class="col-9 col-md-8">
-    <input type="date" value="${oldDate}" oninput="clearError()" id="custDate" class="form-control">
+   <input type="date" 
+value="${oldDate}" 
+min="${new Date().toISOString().split('T')[0]}" 
+oninput="clearError()" 
+id="custDate" 
+class="form-control">
   </div>
 </div>
 
@@ -319,11 +324,13 @@ function updateFinal(total) {
   let finalTotal = baseTotal - discountAmount;
 
   //  UI update
-  let html = `Guest(${people}) × Price(₹${total}) = ₹${baseTotal}`;
+  let html = `Guest <b>(${people})</b> × Price <b>(₹${total})</b> = <b>₹${baseTotal}</b>`;
 
   if (discountPercent > 0) {
     html += `<br><span class="text-success">🏷️Discount (${discountPercent}% OFF) = -₹${discountAmount} </span>`;
-    html += `<br><strong>Final Total = ₹${finalTotal}</strong>`;
+  html += `<hr style="border-top: 1px dashed black; margin: 5px 0;">`;
+
+  html += `<strong>Final Total = ₹${finalTotal}</strong>`;
   }
 
   document.getElementById("finalTotal").innerHTML = html;
