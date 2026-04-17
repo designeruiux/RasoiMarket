@@ -222,28 +222,33 @@ let html = `
     <div class="result-box mt-3 mb-3 text-center ">
       <h5 class="text-start menu-title">Customer details</h5>
 
-      <div class="row mb-2">
-        <div class="col-4">Name</div>
-        <div class="col-8"><input id="custName" placeholder="Name" value="${oldName}" oninput="clearError()" class="form-control"></div>
-      </div>
+    <div class="row mb-2">
+  <div class="col-3 col-md-4">Name</div>
+  <div class="col-9 col-md-8">
+    <input id="custName" placeholder="Name" value="${oldName}" oninput="clearError()" class="form-control">
+  </div>
+</div>
 
-      <div class="row mb-2">
-        <div class="col-4">Phone</div>
-        <div class="col-8"><input id="custPhone" placeholder="Phone" value="${oldPhone}"  oninput="clearError()" class="form-control"></div>
-      </div>
+<div class="row mb-2">
+  <div class="col-3 col-md-4">Phone</div>
+  <div class="col-9 col-md-8">
+    <input id="custPhone" placeholder="Phone" value="${oldPhone}" oninput="clearError()" class="form-control">
+  </div>
+</div>
 
-      <div class="row mb-2">
-        <div class="col-4">Address</div>
-        <div class="col-8">
-          <textarea id="custAddress" placeholder="Address"
-            oninput="clearError()" class="form-control">${oldAddress}</textarea>
-        </div>
-      </div>
+<div class="row mb-2">
+  <div class="col-3 col-md-4">Address</div>
+  <div class="col-9 col-md-8">
+    <textarea id="custAddress" placeholder="Address" oninput="clearError()" class="form-control">${oldAddress}</textarea>
+  </div>
+</div>
 
-      <div class="row mb-2">
-        <div class="col-4">Date</div>
-        <div class="col-8"><input type="date" value="${oldDate}" oninput="clearError()" id="custDate" class="form-control"></div>
-      </div>
+<div class="row mb-2">
+  <div class="col-3 col-md-4">Date</div>
+  <div class="col-9 col-md-8">
+    <input type="date" value="${oldDate}" oninput="clearError()" id="custDate" class="form-control">
+  </div>
+</div>
 
       <div id="formError" class="text-danger"></div>
 
