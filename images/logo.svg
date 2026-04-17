@@ -1,0 +1,26 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradCircle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d35400"></stop>
+      <stop offset="100%" stop-color="#ff7f50"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circle -->
+  <circle cx="60" cy="60" r="55" fill="url(#gradCircle)"></circle>
+
+  <!-- Plate -->
+  <circle cx="60" cy="45" r="20" fill="white"></circle>
+
+  <!-- Spoon -->
+  <rect x="58" y="25" width="4" height="22" rx="2" fill="#d35400"></rect>
+  <circle cx="60" cy="22" r="5" fill="#d35400"></circle>
+
+  <!-- Text -->
+  <text x="60" y="80" text-anchor="middle" font-size="14" fill="white" font-family="Poppins, sans-serif" font-weight="600">
+    Rasoi
+  </text>
+  <text x="60" y="95" text-anchor="middle" font-size="12" fill="white" font-family="Poppins, sans-serif">
+    Market
+  </text>
+</svg>
