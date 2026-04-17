@@ -284,8 +284,34 @@ function clearError() {
 
 function updateFinal(total) {
   let people = parseInt(document.getElementById("people").value) || 1;
-  document.getElementById("finalTotal").innerText =
-    `Guest(${people}) ×  Price(₹${total}) = ₹${total * people}`;
+
+  let baseTotal = total * people;
+
+  let discountPercent = 0;
+
+  // ✅ Discount rules
+  if (people >= 100 && people < 500) {
+    discountPercent = 5;
+  } else if (people >= 500 && people < 1000) {
+    discountPercent = 10;
+  } else if (people >= 1000 && people < 5000) {
+    discountPercent = 15;
+  } else if (people >= 5000 && people <= 10000) {
+    discountPercent = 20;
+  }
+
+  let discountAmount = (baseTotal * discountPercent) / 100;
+  let finalTotal = baseTotal - discountAmount;
+
+  // ✅ UI update
+  let html = `Guest(${people}) × Price(₹${total}) = ₹${baseTotal}`;
+
+  if (discountPercent > 0) {
+    html += `<br>Discount (${discountPercent}%) = -₹${discountAmount}`;
+    html += `<br><strong>Final Total = ₹${finalTotal}</strong>`;
+  }
+
+  document.getElementById("finalTotal").innerHTML = html;
 }
 
 function validateForm() {
@@ -329,25 +355,48 @@ const orderTime = now.toLocaleTimeString();
     return;
   }
 
-  let people = parseInt(document.getElementById("people").value) || 1;
-  const finalTotal = total * people;
+let people = parseInt(document.getElementById("people").value) || 1;
+let baseTotal = total * people;
 
-  let orderText = `\n------------------------------\n`;
-  orderText += `🧾 Order\n\n`;
+let discountPercent = 0;
 
-  selectedItems.forEach(i => {
-    orderText += `${i.name} - ₹${i.price}\n`;
-  });
+if (people >= 100 && people < 500) {
+  discountPercent = 5;
+} else if (people >= 500 && people < 1000) {
+  discountPercent = 10;
+} else if (people >= 1000 && people < 5000) {
+  discountPercent = 15;
+} else if (people >= 5000 && people <= 10000) {
+  discountPercent = 20;
+}
 
-  orderText += `\nDish Price: ₹${total}`;
-  orderText += `\nTotal Guest: ${people}`;
-  orderText += `\nTotal: ₹${finalTotal}`;
-  orderText += `\n\nName: ${custName.value}`;
-  orderText += `\nPhone: ${custPhone.value}`;
-   orderText += `\nAddress: ${custAddress.value}`;
-  orderText += `\nDate: ${custDate.value}`;
-  orderText += `\nOrder Time: ${orderTime}`;
-  orderText += `\n------------------------------\n`;
+let discountAmount = Math.round((baseTotal * discountPercent) / 100);
+let finalTotal = baseTotal - discountAmount;
+
+ let orderText = `\n------------------------------\n`;
+orderText += `🧾 Order\n\n`;
+
+selectedItems.forEach(i => {
+  orderText += `${i.name} - ₹${i.price}\n`;
+});
+
+orderText += `\nDish Price: ₹${total}`;
+orderText += `\nTotal Guest: ${people}`;
+orderText += `\nSubtotal: ₹${baseTotal}`;
+
+if (discountPercent > 0) {
+  orderText += `\nDiscount (${discountPercent}%): -₹${discountAmount}`;
+} else {
+  orderText += `\nDiscount: ₹0`;
+}
+
+orderText += `\nFinal Total: ₹${finalTotal}`;
+orderText += `\n\nName: ${custName.value}`;
+orderText += `\nPhone: ${custPhone.value}`;
+orderText += `\nAddress: ${custAddress.value}`;
+orderText += `\nDate: ${custDate.value}`;
+orderText += `\nOrder Time: ${orderTime}`;
+orderText += `\n------------------------------\n`;
 
 allOrdersText += orderText;
 localStorage.setItem(STORAGE_KEY, allOrdersText);
@@ -359,9 +408,15 @@ localStorage.setItem(STORAGE_KEY, allOrdersText);
     msg += `${i.name} - ₹${i.price}\n`;
   });
 
-  msg += `\nDish Price: ₹${total}`;
-  msg += `\nTotal Guest: ${people}`;
-  msg += `\nTotal: ₹${finalTotal}`;
+ msg += `\nDish Price: ₹${total}`;
+msg += `\nTotal Guest: ${people}`;
+msg += `\nSubtotal: ₹${baseTotal}`;
+
+if (discountPercent > 0) {
+  msg += `\nDiscount (${discountPercent}%): -₹${discountAmount}`;
+}
+
+msg += `\nFinal Total: ₹${finalTotal}`;
   msg += `\n\nName: ${custName.value}`;
   msg += `\nPhone: ${custPhone.value}`;
   msg += `\nAddress: ${custAddress.value}`;
