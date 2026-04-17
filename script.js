@@ -170,8 +170,8 @@ function renderSelected() {
   const oldName = document.getElementById("custName")?.value || "";
   const oldPhone = document.getElementById("custPhone")?.value || "";
   const oldDate = document.getElementById("custDate")?.value || "";
- const oldAddress = document.getElementById("custAddress")?.value || "";
-   const oldPeople = document.getElementById("people")?.value || 1;
+  const oldAddress = document.getElementById("custAddress")?.value || "";
+  const oldPeople = document.getElementById("people")?.value || 1;
 
   if (selectedItems.length === 0) {
     document.getElementById("result").innerHTML = "";
@@ -186,8 +186,10 @@ let html = `
   <div class="result-box">
     <h5 class="d-flex justify-content-between align-items-center">
       <span class="menu-title">Selected Items ${count}</span>
+    
       
     </h5>
+
 `;
 
   selectedItems.forEach((item, index) => {
@@ -208,7 +210,7 @@ let html = `
 
         <div class="d-flex justify-content-end align-items-center mt-3 gap-2">
           <label class="mb-0">Total Guest:</label>
-          <input type="number" value="${oldPeople}" oninput="updateFinal(${total})" id="people" value="1" min="1" class="form-control w-auto">
+          <input type="number" value="${oldPeople}" oninput="fixPeopleInput(this); updateFinal(${total})" id="people" value="1" min="1" max="10000" class="form-control w-auto">
           <button class="btn btn-add" onclick="updateFinal(${total})">Calculate</button>
         </div>
 
@@ -281,6 +283,14 @@ function downloadAllOrders() {
 function clearError() {
   document.getElementById("formError").innerText = "";
 }
+function fixPeopleInput(input) {
+  let value = parseInt(input.value) ;
+
+  if (value > 10000) value = 10000;
+
+
+  input.value = value;
+}
 
 function updateFinal(total) {
   let people = parseInt(document.getElementById("people").value) || 1;
@@ -289,7 +299,7 @@ function updateFinal(total) {
 
   let discountPercent = 0;
 
-  // ✅ Discount rules
+  //  Discount rules
   if (people >= 100 && people < 500) {
     discountPercent = 5;
   } else if (people >= 500 && people < 1000) {
@@ -303,11 +313,11 @@ function updateFinal(total) {
   let discountAmount = (baseTotal * discountPercent) / 100;
   let finalTotal = baseTotal - discountAmount;
 
-  // ✅ UI update
+  //  UI update
   let html = `Guest(${people}) × Price(₹${total}) = ₹${baseTotal}`;
 
   if (discountPercent > 0) {
-    html += `<br>Discount (${discountPercent}%) = -₹${discountAmount}`;
+    html += `<br><span class="text-success">🏷️Discount (${discountPercent}% OFF) = -₹${discountAmount} </span>`;
     html += `<br><strong>Final Total = ₹${finalTotal}</strong>`;
   }
 
@@ -321,7 +331,7 @@ function validateForm() {
   const address = custAddress.value.trim();
 
   if (!name) return "Enter name";
-    if (!phone) return "Enter phone number";
+  if (!phone) return "Enter phone number";
   if (phone.length < 10 || isNaN(phone)) return "Invalid phone";
   if (!date) return "Please Select date";
   if (!address) return "Enter address";
@@ -414,7 +424,7 @@ msg += `\nSubtotal: ₹${baseTotal}`;
 
 if (discountPercent > 0) {
   msg += `\nDiscount (${discountPercent}%): -₹${discountAmount}`;
-}
+} 
 
 msg += `\nFinal Total: ₹${finalTotal}`;
   msg += `\n\nName: ${custName.value}`;
