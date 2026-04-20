@@ -9,6 +9,23 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
 }
+/* Make body a column flex container and take full height */
+html, body {
+    /* height: 100%; */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content should grow to fill space */
+.container {
+    flex: 1;
+}
+
+/* Footer stays at the bottom */
 
 .selected-row {
   display: flex;
@@ -106,6 +123,8 @@ body {
 .btn-add {
   background: linear-gradient(90deg, #d35400, #ff7f50);
   color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
 }
 
 .btn-light:hover {
@@ -189,6 +208,10 @@ body {
 
 .nav-tabs .nav-link:hover {
   background-color: #ffff;
+}
+
+.home-two-box{
+  width: 60%;
 }
 
 /* Result Box */
@@ -330,15 +353,18 @@ input.form-control {
 
 /* contact page */
 
-.contact-form{
- background-color: #f9f9f9;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+.contact-form {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 60%;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 /* ========================= */
-/* MEDIA QUERIES (ALL BELOW) */
+/* MEDIA QUERIES  */
 /* ========================= */
 
 @media (max-width: 984px) {
@@ -379,7 +405,15 @@ input.form-control {
   .menu-card {
     margin-bottom: 6px;
   }
-
+  .home-two-box{
+  width: 100%;
+}
+  .contact-form {
+    padding: 15px;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
   .result-box {
     padding: 10px !important;
   }
@@ -395,6 +429,7 @@ input.form-control {
 
   .btn-add{
     font-size: 15px;
+    
   }
 
   #result {

@@ -445,7 +445,7 @@ msg += `\nFinal Total: ₹${finalTotal}`;
   msg += `\nDate: ${custDate.value}`;
  msg += `\nOrder Time: ${orderTime}`;
 
-  window.open(`https://wa.me/919408916394?text=${encodeURIComponent(msg)}`);
+  window.open(`https://wa.me/+919909403318?text=${encodeURIComponent(msg)}`);
   resetApp() 
 }
 
