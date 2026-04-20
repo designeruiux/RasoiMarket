@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
 }
-/* Make body a column flex container and take full height */
+
 html, body {
     /* height: 100%; */
     margin: 0;
@@ -20,12 +20,12 @@ body {
     flex-direction: column;
 }
 
-/* Main content should grow to fill space */
+
 .container {
     flex: 1;
 }
 
-/* Footer stays at the bottom */
+
 
 .selected-row {
   display: flex;
